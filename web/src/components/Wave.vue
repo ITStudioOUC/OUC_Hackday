@@ -31,12 +31,12 @@ export default {
     waveColor: {
       type: Array,
       default: function(){
-        return ['#40ccd4','#71d8df','rgba(256,256,256,.5)','rgba(256,256,256,1)'];
+        return ['#40ccd4','#71d8df','rgba(99,190,255,0.5)','rgb(56,133,255)'];
       },
     },
     waveBackgroundColor: {
       type: String,
-      default: '#0aaacb',
+      default: '#ccf3fa',
     },
     // position bottom
     wavePosition: {
@@ -45,7 +45,7 @@ export default {
     },
     space: {
       type: Number,
-      default: 50,
+      default: 20,
     },
   },
   data () {
@@ -62,6 +62,7 @@ export default {
         height: 20
       },
       divStyle: {
+        // height: 200,
         paddingBottom: 0,
         paddingTop: 0,
         background: this.waveBackgroundColor,
@@ -75,10 +76,10 @@ export default {
     this.wallStyle.height = this.waveHeight*2 + 40;
     if (this.wavePosition === 'bottom'){
       this.wallStyle.bottom = 0;
-      this.divStyle.paddingBottom = `${this.space}px`;
+      // this.divStyle.paddingBottom = `${this.space}px`;
     }else{
       this.wallStyle.top = 0;
-      this.divStyle.paddingTop = `${this.space}px`;
+      // this.divStyle.paddingTop = `${this.space}px`;
     }
 
     // Snap init.
@@ -152,11 +153,13 @@ export default {
 </script>
 
 <style lang="scss">
-  .wave-div{
-    position: relative;
-    overflow: hidden;
-    z-index: -2;
-
+  //.wave-div {
+  //  position: relative;
+  //  overflow: hidden;
+  //  z-index: -2;
+  //  height: 150px;
+  //  bottom: 0;
+  //}
   .wave-wall{
     z-index:-1;
     width:130%;
@@ -164,5 +167,5 @@ export default {
     position:absolute;
     left:-30%;
   }
-}
+
 </style>

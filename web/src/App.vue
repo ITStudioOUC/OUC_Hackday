@@ -1,19 +1,23 @@
 <template>
-  <WaveViewer
-      wavePosition="bottom"
-      :waveLayerCount="4"
-      :space="100"
-      :waveGap="200"
-      :waveHeight="50">
-    <div>
-    </div>
-  </WaveViewer>
-  <div>
-<!--    <img id="endImage" src="@/assets/imgs/foreground.jpg">-->
-    <img id="startImage" src="@/assets/imgs/background.jpg">
+  <div class="common-layout">
+      <el-container>
+        <el-main>
+          <div id="content" class="bg_blue" style="width: 800px;height: 600px;margin-left: auto;margin-right: auto">
+          </div>
+        </el-main>
+        <el-footer>
+          <WaveViewer
+              wavePosition="bottom"
+              :waveLayerCount="4"
+              :space="100"
+              :waveGap="200"
+              :waveHeight="50">
+            <div>
+            </div>
+          </WaveViewer>
+        </el-footer>
+      </el-container>
   </div>
-
-
 </template>
 
 <script>
@@ -39,7 +43,7 @@ export default {
     function middle () {
       //exchange content
       console.log('middle');
-      document.getElementById('startImage').style.display = "none";
+      document.getElementById('content').style["background-color"] = "#ffa100";
     }
     function end () {
       //end callback
@@ -47,9 +51,12 @@ export default {
     }
     const _this = this
     this.pixelwave = new PixelWave({
-      canvasTop: 500, // for a fixed header
+      canvasTop: 0, // for a fixed header
+      delayMiddle: 1,
+      speedIn: 0.9,
+      speedOut: 0.9,
     });
-    document.getElementById('startImage').addEventListener('click', function() {
+    document.getElementById('content').addEventListener('click', function() {
       _this.pixelwave.start(start, middle, end);
     })
   }
@@ -65,5 +72,18 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+.bg_yellow {
+  background-color: #ffa100;
+}
+.bg_blue {
+  background-color: #001f7a;
+}
+.el-footer {
+  --el-footer-padding: 0px
+}
+.el-main {
+  --el-main-padding: 0px
+}
 
 </style>
+
